@@ -17,6 +17,7 @@ import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 
 
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
                 path: 'secret',
                 element: <PrivateRoute><Secret></Secret></PrivateRoute>
             }
-           
+
         ]
     },
     {
@@ -75,11 +76,11 @@ export const router = createBrowserRouter([
                 path: 'paymentHistory',
                 element: <PaymentHistory></PaymentHistory>
             },
-            
+
             // admin only routes
             {
                 path: "adminHome",
-                element: <AdminRoute><UserHome></UserHome></AdminRoute>
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
             },
             {
                 path: 'addItems',
@@ -92,7 +93,7 @@ export const router = createBrowserRouter([
             {
                 path: 'updateItem/:id',
                 element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+                loader: ({ params }) => fetch(`https://bistro-boss-server-fawn-nine.vercel.app/menu/${params.id}`)
             },
 
             {

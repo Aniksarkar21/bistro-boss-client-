@@ -7,9 +7,9 @@ const useMenu = () => {
     const axiosPublic = useAxiosPublic();
     // const [menu, setMenu] = useState([]);
     // const [loading, setLoading] = useState(true);
-    
+
     // useEffect(() => {
-    // fetch('http://localhost:5000/menu')
+    // fetch('https://bistro-boss-server-fawn-nine.vercel.app/menu')
     // .then(res => res.json())
     // .then(data =>  {
     //     setMenu(data);
@@ -17,11 +17,11 @@ const useMenu = () => {
     // });
     // }, []);
 
-    const {data: menu = [], isPending: loading, refetch}= useQuery({
+    const { data: menu = [], isPending: loading, refetch } = useQuery({
         queryKey: ['menu'],
-        queryFn: async() =>{
-              const res = await axiosPublic.get('/menu');
-                return res.data;
+        queryFn: async () => {
+            const res = await axiosPublic.get('/menu');
+            return res.data;
         }
     })
     return [menu, loading, refetch];
